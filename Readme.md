@@ -9,4 +9,11 @@ day 2
 - OOPS concept
 - Classmethod
 
+day 3
+
+- file handling
+- csv
+- pickle
+- Threading
+
 Ankur
