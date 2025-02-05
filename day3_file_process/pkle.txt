@@ -1,0 +1,9 @@
+# Creating multiple lists
+[1, 2, 3, 4, 5]
+['a', 'b', 'c', 'd']
+[True, False, True, False]
+
+# Creating multiple dictionaries
+{'name': 'Alice', 'age': 25, 'city': 'New York'}
+{'name': 'Bob', 'age': 30, 'city': 'San Francisco'}
+{'name': 'Charlie', 'age': 35, 'city': 'Los Angeles'}
