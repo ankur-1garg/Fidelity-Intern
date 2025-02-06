@@ -74,9 +74,11 @@ import urllib
 import urllib.request
 import ssl
 
+ssl._create_default_https_context = ssl._create_stdlib_context
 
 # ctx=ssl.
-u = urllib.request.urlopen("https://www.google.com/", context=None)
+u = urllib.request.urlopen(
+    "https://www.redbus.in/info/contactus", context=None)
 text = u.read()
 pattern = "[0-9]{12}"
 num = re.findall(pattern, str(text))
