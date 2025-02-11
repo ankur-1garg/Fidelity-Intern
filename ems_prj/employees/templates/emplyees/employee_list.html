@@ -1,17 +1,22 @@
-<!-- filepath: /C:/Users/KIIT/Downloads/fidelity intern/ems_prj/employees/templates/emplyees/employee_list.html -->
+<!-- filepath: /C:/Users/KIIT/Downloads/fidelity intern/ems_prj/employees/templates/employees/employee_list.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee List</title>
-    <!-- Add your CSS links here -->
 </head>
 <body>
     <h1>Employee List</h1>
+    <a href="{% url 'employee_create' %}">Add Employee</a>
     <ul>
         {% for employee in employees %}
-            <li><a href="{% url 'employee_detail' employee.pk %}">{{ employee.username }}</a></li>
+            <li>
+                <a href="{% url 'employee_detail' employee.pk %}">{{ employee.username }} ({{ employee.employee_id }})</a>
+                <a href="{% url 'employee_update' employee.pk %}">Edit</a>
+                <form action="{% url 'employee_delete' employee.pk %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
 </body>

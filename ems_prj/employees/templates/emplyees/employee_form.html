@@ -1,17 +1,16 @@
-<!-- filepath: /C:/Users/KIIT/Downloads/fidelity intern/ems_prj/employees/templates/emplyees/employee_form.html -->
+<!-- filepath: /C:/Users/KIIT/Downloads/fidelity intern/ems_prj/employees/templates/employees/employee_form.html -->
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Employee</title>
-    <!-- Add your CSS links here -->
-  </head>
-  <body>
-    <h1>Edit Employee</h1>
+<html>
+<head>
+    <title>Employee Form</title>
+</head>
+<body>
+    <h1>{{ form.instance.pk|yesno:"Edit Employee,Add Employee" }}</h1>
     <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <button type="submit">Save</button>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
     </form>
-  </body>
+    <a href="{% url 'employee_list' %}">Back to List</a>
+</body>
 </html>
