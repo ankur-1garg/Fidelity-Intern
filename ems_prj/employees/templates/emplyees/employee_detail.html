@@ -1,0 +1,21 @@
+<!-- filepath: /C:/Users/KIIT/Downloads/fidelity intern/ems_prj/employees/templates/emplyees/employee_detail.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Detail</title>
+    <!-- Add your CSS links here -->
+  </head>
+  <body>
+    <h1>{{ employee.username }}</h1>
+    <p>Employee ID: {{ employee.employee_id }}</p>
+    <p>Email: {{ employee.email }}</p>
+    <p>Date of Joining: {{ employee.date_of_joining }}</p>
+    <a href="{% url 'employee_update' employee.pk %}">Edit</a>
+    <form method="post" action="{% url 'employee_delete' employee.pk %}">
+      {% csrf_token %}
+      <button type="submit">Delete</button>
+    </form>
+  </body>
+</html>
