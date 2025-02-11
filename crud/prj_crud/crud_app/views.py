@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from crud_app.forms import OrdersForm
 from crud_app.models import Orders
+from django.contrib import messages
+from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate,login as auth_login,logout
+from django.contrib.auth.decorators import login_required
 
 
 def orders(request):
@@ -45,3 +50,32 @@ def setsession(request):
 def getsession(request):
     name = request.session.get('name', 'Guest')
     return HttpResponse(name)
+
+def showstatic(request):
+    return render(request, 'showstatic.html')
+
+def user_login(request):
+    if request.method == 'POST':
+        uname = request.POST.get('username')
+        password = request.POST.get('password')
+        if not User.objects.filter(username=uname).exists():
+            messages.error(request, 'User not found')
+        user=authenticate(request, username=uname, password=password)
+        
+        if user == None:
+            messages.error(request, 'Invalid Credentials')
+            
+        else:
+            auth_login(request, user)
+            return redirect('home')
+    return render(request, 'login.html')
+
+def register(request):
+    return redirect('/home/')
+def home(request):
+    return render(request, 'home.html')    
+        
+        
+                
+                
+            
