@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>Inventory Items</h2>
+
+  {% if inventories %}
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Description</th>
+          {% if user.is_authenticated %}
+          <th>Actions</th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in inventories %}
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ item.price|floatformat:2 }}</td>
+          <td>{{ item.description }}</td>
+          {% if user.is_authenticated %}
+          <td>
+            <div class="btn-group">
+              <a
+                href="{% url 'inventory-update' item.pk %}"
+                class="btn btn-warning btn-sm"
+                >Edit</a
+              >
+              <a
+                href="{% url 'inventory-delete' item.pk %}"
+                class="btn btn-danger btn-sm"
+                >Delete</a
+              >
+            </div>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <p>No inventory items available.</p>
+  {% endif %} {% if user.is_authenticated %}
+  <div class="mt-3">
+    <a href="{% url 'inventory-create' %}" class="btn btn-primary"
+      >Add New Item</a
+    >
+  </div>
+  {% else %}
+  <div class="alert alert-info mt-3">
+    <p>
+      To add, edit, or delete inventory items, please
+      <a href="{% url 'login' %}">login</a> or
+      <a href="{% url 'register' %}">register</a> first.
+    </p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

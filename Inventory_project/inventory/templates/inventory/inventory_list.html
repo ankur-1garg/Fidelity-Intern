@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+  <div class="col-12">
+    <h1>Inventory List</h1>
+    {% if user.is_authenticated %}
+    <a href="{% url 'inventory-create' %}" class="btn btn-primary mb-3"
+      >Add New Item</a
+    >
+    {% endif %}
+  </div>
+</div>
+
+<div class="row">
+  {% for inventory in inventories %}
+  <div class="col-md-4 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{ inventory.name }}</h5>
+        <p class="card-text">
+          Quantity: {{ inventory.quantity }}<br />
+          Price: ${{ inventory.price }}<br />
+          Created: {{ inventory.created_at|date:"M d, Y" }}
+        </p>
+        {% if user.is_authenticated %}
+        <a href="{% url 'inventory-detail' inventory.pk %}" class="btn btn-info"
+          >View</a
+        >
+        <a
+          href="{% url 'inventory-update' inventory.pk %}"
+          class="btn btn-warning"
+          >Edit</a
+        >
+        <a
+          href="{% url 'inventory-delete' inventory.pk %}"
+          class="btn btn-danger"
+          >Delete</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <div class="col-12">
+    <p>No inventory items found.</p>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
