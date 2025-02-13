@@ -1,16 +1,18 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+{% block content %}
 <div class="row">
   <div class="col-12">
     <h1>Inventory List</h1>
+    <!-- Button to add a new inventory item, visible only to authenticated users -->
     {% if user.is_authenticated %}
-    <a href="{% url 'inventory-create' %}" class="btn btn-primary mb-3"
-      >Add New Item</a
-    >
+    <a href="{% url 'inventory-create' %}" class="btn btn-primary mb-3">Add New Item</a>
     {% endif %}
   </div>
 </div>
 
 <div class="row">
+  <!-- Loop through each inventory item -->
   {% for inventory in inventories %}
   <div class="col-md-4 mb-4">
     <div class="card">
@@ -21,25 +23,17 @@
           Price: ${{ inventory.price }}<br />
           Created: {{ inventory.created_at|date:"M d, Y" }}
         </p>
+        <!-- Buttons to view, edit, and delete the inventory item, visible only to authenticated users -->
         {% if user.is_authenticated %}
-        <a href="{% url 'inventory-detail' inventory.pk %}" class="btn btn-info"
-          >View</a
-        >
-        <a
-          href="{% url 'inventory-update' inventory.pk %}"
-          class="btn btn-warning"
-          >Edit</a
-        >
-        <a
-          href="{% url 'inventory-delete' inventory.pk %}"
-          class="btn btn-danger"
-          >Delete</a
-        >
+        <a href="{% url 'inventory-detail' inventory.pk %}" class="btn btn-info">View</a>
+        <a href="{% url 'inventory-update' inventory.pk %}" class="btn btn-warning">Edit</a>
+        <a href="{% url 'inventory-delete' inventory.pk %}" class="btn btn-danger">Delete</a>
         {% endif %}
       </div>
     </div>
   </div>
   {% empty %}
+  <!-- Message displayed if no inventory items are found -->
   <div class="col-12">
     <p>No inventory items found.</p>
   </div>
