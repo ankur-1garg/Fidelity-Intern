@@ -1,26 +1,23 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+{% block content %}
 <div class="card">
   <div class="card-body">
     <h2 class="card-title">{{ inventory.name }}</h2>
     <p class="card-text">
-      <strong>Description:</strong> {{ inventory.description|default:"No
-      description provided" }}<br />
+      <strong>Description:</strong> {{ inventory.description|default:"No description provided" }}<br />
       <strong>Quantity:</strong> {{ inventory.quantity }}<br />
       <strong>Price:</strong> ${{ inventory.price }}<br />
       <strong>Created:</strong> {{ inventory.created_at|date:"M d, Y H:i" }}<br />
-      <strong>Last Updated:</strong> {{ inventory.updated_at|date:"M d, Y H:i"
-      }}<br />
+      <strong>Last Updated:</strong> {{ inventory.updated_at|date:"M d, Y H:i" }}<br />
       <strong>Created By:</strong> {{ inventory.created_by.username }}
     </p>
-    <a href="{% url 'inventory-update' inventory.pk %}" class="btn btn-warning"
-      >Edit</a
-    >
-    <a href="{% url 'inventory-delete' inventory.pk %}" class="btn btn-danger"
-      >Delete</a
-    >
-    <a href="{% url 'inventory-list' %}" class="btn btn-secondary"
-      >Back to List</a
-    >
+    <!-- Button to edit the inventory item -->
+    <a href="{% url 'inventory-update' inventory.pk %}" class="btn btn-warning">Edit</a>
+    <!-- Button to delete the inventory item -->
+    <a href="{% url 'inventory-delete' inventory.pk %}" class="btn btn-danger">Delete</a>
+    <!-- Button to go back to the inventory list -->
+    <a href="{% url 'inventory-list' %}" class="btn btn-secondary">Back to List</a>
   </div>
 </div>
 {% endblock %}
