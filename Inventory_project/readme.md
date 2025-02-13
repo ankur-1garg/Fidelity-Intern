@@ -13,5 +13,5 @@ This project is an Inventory Management System designed to track and manage inve
 - User authentication
 
 Author
-Ankur
+Ankur &
 Shreyansh Srivastava
