@@ -1,17 +1,16 @@
 from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from .models import Student
 from .serializers import StudentSerializer
-from rest_framework_swagger.views import get_swagger_view
-
 
 
 @api_view(['GET'])
 def get_data(request):
+    """
+    Test endpoint returning static data
+    """
     data = {'name': 'John', 'age': 23}
     return Response(data)
 
@@ -65,6 +64,3 @@ def student_delete(request, pk):
         return Response({'message': 'Student deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
     except Student.DoesNotExist:
         return Response({'message': 'Student not found'}, status=status.HTTP_404_NOT_FOUND)
-    
- 
-
