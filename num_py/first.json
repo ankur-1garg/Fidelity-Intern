@@ -1,0 +1,9 @@
+{
+    "name": "John",
+    "address": {
+        "street": "123 Main St",
+        "city": "New York"
+    },
+    "phone": "123-456-7890",
+    "libdo": "6"
+}

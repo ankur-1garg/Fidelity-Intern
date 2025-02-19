@@ -1,0 +1,45 @@
+# version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'Fil'
+      MYSQL_ROOT_PASSWORD: 'Ankur@23'
+      MYSQL_USER: 'django_user'
+      MYSQL_PASSWORD: 'Ankur@23'
+    ports:
+      - "3307:3306"  # Changed port to 3307
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    platform: linux/x86_64  # Added platform specification
+
+  web:
+    build: .
+    container_name: django
+    restart: always
+    command: >
+      sh -c "python prj_midware/manage.py migrate &&
+             python prj_midware/manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_NAME=Fil
+      - DB_USER=django_user
+      - DB_PASSWORD=Ankur@23
+      - DJANGO_SETTINGS_MODULE=prj_midware.settings
+
+volumes:
+  mysql_data:

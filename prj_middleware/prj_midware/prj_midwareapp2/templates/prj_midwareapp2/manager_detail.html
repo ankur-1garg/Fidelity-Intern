@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manager Detail</title>
+    <style>
+        .detail-card { 
+            padding: 20px;
+            border: 1px solid #ddd;
+            margin: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="detail-card">
+        <h2>{{ manager.name }}</h2>
+        <p><strong>Employee ID:</strong> {{ manager.employee_id }}</p>
+        <p><strong>Salary:</strong> ₹{{ manager.salary }}</p>
+        <p><strong>Date of Joining:</strong> {{ manager.doj|date:"d-m-Y" }}</p>
+        <p><strong>Employees Managed:</strong> {{ manager.manages }}</p>
+    </div>
+    <a href="{% url 'manager_list' %}">Back to List</a>
+</body>
+</html>
