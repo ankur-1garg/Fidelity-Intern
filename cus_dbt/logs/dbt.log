@@ -1,0 +1,31 @@
+[0m11:53:01.821730 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AB67E09550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AB65FA11D0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AB68F37ED0>]}
+
+
+============================== 11:53:01.828655 | aa80c651-fb3e-4383-8171-6e026f7eb583 ==============================
+[0m11:53:01.828655 [info ] [MainThread]: Running with dbt=1.9.2
+[0m11:53:01.830164 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\KIIT\\.dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': 'logs', 'warn_error': 'None', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt init', 'send_anonymous_usage_stats': 'True'}
+[0m11:53:14.692853 [debug] [MainThread]: Starter project path: C:\Users\KIIT\Downloads\fidelity intern\cus_dbt\cusdbt_env\Lib\site-packages\dbt\include\starter_project
+[0m11:53:14.726883 [info ] [MainThread]: 
+Your new dbt project "nested_query" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m11:53:14.728514 [info ] [MainThread]: Setting up your profile.
+[0m11:53:14.732586 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No adapters available. Learn how to install an adapter by going to https://docs.getdbt.com/docs/connect-adapters#install-using-the-cli
+[0m11:53:14.734052 [debug] [MainThread]: Command `dbt init` failed at 11:53:14.733819 after 13.06 seconds
+[0m11:53:14.734692 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AB68F5EB10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AB68FCAD50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AB68DEE9C0>]}
+[0m11:53:14.735166 [debug] [MainThread]: Flushing usage events
+[0m11:53:15.799228 [debug] [MainThread]: An error was encountered while trying to flush usage events
