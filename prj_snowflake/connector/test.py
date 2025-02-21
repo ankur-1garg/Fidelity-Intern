@@ -4,7 +4,7 @@ from snowflake.connector import connect
 # Snowflake connection parameters
 conn = connect(
     account='ut20337.ap-southeast-1',
-    user='Ankur',
+    user='Ankur',    
     password='x16bTJawBrXFJb4VyE',
     warehouse='COMPUTE_WH',
     database='TRIAL_DB',
