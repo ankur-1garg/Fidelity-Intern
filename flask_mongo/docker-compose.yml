@@ -1,0 +1,16 @@
+services:
+  web:
+    image: ag1121/flask-mongo-app:latest
+    container_name: flask-mongo-app
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_DEBUG=1
+    restart: always
+    networks:
+      - flask-network
+
+networks:
+  flask-network:
+    driver: bridge
