@@ -1,0 +1,24 @@
+.product-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-detail-image {
+    max-height: 500px;
+    object-fit: contain;
+}
+
+.card {
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.price {
+    color: #e44d26;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
